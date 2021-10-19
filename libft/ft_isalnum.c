@@ -6,7 +6,7 @@
 /*   By: lgenevey <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 17:34:37 by lgenevey          #+#    #+#             */
-/*   Updated: 2021/10/11 17:51:01 by lgenevey         ###   ########.fr       */
+/*   Updated: 2021/10/13 14:50:57 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,5 +16,6 @@ int	ft_isalnum(int c)
 {
 	if (ft_isalpha(c) || ft_isdigit(c))
 		return (1);
-	else return (0);
+	else
+		return (0);
 }

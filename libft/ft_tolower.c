@@ -1,21 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isprint.c                                       :+:      :+:    :+:   */
+/*   ft_tolower.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lgenevey <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/11 18:06:32 by lgenevey          #+#    #+#             */
-/*   Updated: 2021/10/13 14:57:46 by lgenevey         ###   ########.fr       */
+/*   Created: 2021/10/14 11:33:15 by lgenevey          #+#    #+#             */
+/*   Updated: 2021/10/14 11:47:19 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isprint(int c)
+int ft_tolower(int c)
 {
-	if (c >= 32 && c <= 126)
-		return (1);
-	else
-		return (0);
+	if (c < 'A' && c > 'Z')
+	return (c);
+	else if (c >= 'A' && c <= 'Z')
+		c += 32;
+	return (c);
 }

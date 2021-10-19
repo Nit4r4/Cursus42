@@ -6,7 +6,7 @@
 /*   By: lgenevey <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 17:03:21 by lgenevey          #+#    #+#             */
-/*   Updated: 2021/10/11 17:27:34 by lgenevey         ###   ########.fr       */
+/*   Updated: 2021/10/13 15:04:10 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 int	ft_isdigit(int d)
 {
 	if (d >= '0' && d <= '9')
-	   return (1);
-	else return (0);	   
+		return (1);
+	else
+		return (0);	   
 }
