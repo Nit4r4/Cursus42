@@ -1,22 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_tolower.c                                       :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lgenevey <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/14 11:33:15 by lgenevey          #+#    #+#             */
-/*   Updated: 2021/10/22 14:46:52 by lgenevey         ###   ########.fr       */
+/*   Created: 2021/10/25 11:44:00 by lgenevey          #+#    #+#             */
+/*   Updated: 2021/10/25 15:19:39 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdlib.h>
 #include "libft.h"
 
-int	ft_tolower(int c)
+void	*ft_calloc(size_t count, size_t size)
 {
-	if (c < 'A' && c > 'Z')
-		return (c);
-	else if (c >= 'A' && c <= 'Z')
-		c += 32;
-	return (c);
+	void	*new_array;
+
+	new_array = malloc(count * size);
+	if (new_array == NULL)
+		return (NULL);
+	ft_bzero(new_array, count * size);
+	return (new_array);
 }

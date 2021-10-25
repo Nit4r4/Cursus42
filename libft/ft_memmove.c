@@ -6,7 +6,7 @@
 /*   By: lgenevey <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 18:06:13 by lgenevey          #+#    #+#             */
-/*   Updated: 2021/10/19 13:34:24 by lgenevey         ###   ########.fr       */
+/*   Updated: 2021/10/22 14:42:19 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,9 @@ void	*ft_memmove(void *dest, const void *src, size_t len)
 	}
 	else
 	{
-		i = 0;
-		while (i < len)
-		{
+		i = -1;
+		while (++i < len)
 			pdest[i] = psrc[i];
-			i++;
-		}
 	}
 	return (pdest);
 }

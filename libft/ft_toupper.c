@@ -6,7 +6,7 @@
 /*   By: lgenevey <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/14 10:53:36 by lgenevey          #+#    #+#             */
-/*   Updated: 2021/10/14 11:33:08 by lgenevey         ###   ########.fr       */
+/*   Updated: 2021/10/22 14:47:14 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	ft_toupper(int c)
 {
 	if (c < 'a' && c > 'z')
-	return (c);
+		return (c);
 	else if (c >= 'a' && c <= 'z')
 		c -= 32;
 	return (c);

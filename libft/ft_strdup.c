@@ -1,22 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_tolower.c                                       :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lgenevey <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/14 11:33:15 by lgenevey          #+#    #+#             */
-/*   Updated: 2021/10/22 14:46:52 by lgenevey         ###   ########.fr       */
+/*   Created: 2021/10/25 14:00:30 by lgenevey          #+#    #+#             */
+/*   Updated: 2021/10/25 15:16:39 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+// l23 : le + 1 c'est pour prendre en compte le 0 qui termine le tableau de char
 
-int	ft_tolower(int c)
+#include "libft.h"
+#include <stdlib.h>
+
+char	*ft_strdup(const char *s1)
 {
-	if (c < 'A' && c > 'Z')
-		return (c);
-	else if (c >= 'A' && c <= 'Z')
-		c += 32;
-	return (c);
+	char	*copy;
+	int		i;
+
+	copy = (char *)malloc((ft_strlen(s1) + 1) * sizeof(char));
+	if (copy == NULL)
+		return (NULL);
+	i = 0;
+	while (s1[i])
+	{
+		copy[i] = s1[i];
+		i++;
+	}
+	copy[i] = 0;
+	return (copy);
 }
