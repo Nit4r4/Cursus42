@@ -1,30 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main_ft_isalnum.c                                  :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lgenevey <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/11 17:33:33 by lgenevey          #+#    #+#             */
-/*   Updated: 2021/10/11 17:50:59 by lgenevey         ###   ########.fr       */
+/*   Created: 2021/11/04 17:31:39 by lgenevey          #+#    #+#             */
+/*   Updated: 2021/11/04 19:50:02 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <ctype.h>
-#include "../ft_isalnum.c"
-#include "../ft_isalpha.c"
-#include "../ft_isdigit.c"
+#include <stdlib.h>
+#include "libft.h"
 
-int	main()
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	printf("ISALNUM\n");
-	printf("should be 1 - [D] %d\n", isalnum('D'));
-	printf("should be 0 - [124] %d\n" , isalnum(124));
+	char	*str;
+	int		i;
 
-	printf("FT_ISALNUM\n");
-	printf("should be 1 - [D] %d\n", ft_isalnum('D'));
-	printf("should be 0 - [124] %d\n" , ft_isalnum(124));
-
-	return (0);
+	if (!s || !f)
+		return (NULL);
+	str = (char *)malloc(sizeof(char) * ft_strlen(s) + 1);
+	if (str == NULL)
+		return (NULL);
+	i = 0;
+	while (s[i])
+	{
+		str[i] = (*f)(i, s[i]);
+		i++;
+	}
+	str[i] = 0;
+	return (str);
 }
