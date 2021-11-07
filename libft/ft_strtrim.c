@@ -6,7 +6,7 @@
 /*   By: lgenevey <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 14:41:28 by lgenevey          #+#    #+#             */
-/*   Updated: 2021/10/29 12:03:35 by lgenevey         ###   ########.fr       */
+/*   Updated: 2021/11/05 12:28:41 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <stdio.h>
@@ -65,7 +65,7 @@ char	*ft_strtrim(const char *s1, const char *set)
 	start = ft_my_strchr((char *)s1, (char *)set);
 	end = ft_my_strrchr((char *)s1, (char *)set);
 	if (!start && !end)
-		return ("");
+		return (ft_strdup(""));
 	str = (char *)malloc((end - start + 2) * sizeof(char));
 	if (str == NULL)
 		return (NULL);
