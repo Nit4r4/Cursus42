@@ -6,7 +6,7 @@
 /*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/21 17:03:39 by lgenevey          #+#    #+#             */
-/*   Updated: 2021/12/13 19:05:57 by lgenevey         ###   ########.fr       */
+/*   Updated: 2021/12/23 14:52:45 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 
 #include "get_next_line.h"
 #include <stdio.h>
-
+/*
 int	main(void)
 {
 	int	fd;
 	int	i;
 
-	fd = open("41_no_nl", O_RDONLY);
+	//fd = open("gnlTester/files/41_with_nl", O_RDONLY);
 	//fd = open("test.txt", O_RDONLY);
 
 	// on veut au moins un fichier
@@ -28,7 +28,7 @@ int	main(void)
 	{
 		//ici combien de fois on veut appeler gnl, combien de lignes on veut afficher
 		i = 0;
-		while (i <= 1)
+		while (i <= 2)
 		{
 			printf("%d:%s", i++, get_next_line(fd));
 		}
@@ -37,16 +37,16 @@ int	main(void)
 		return (-1);
 	close(fd);
 	return (0);
-}
+}*/
 
-/*
+
 
 int	main(void)
 {
 	int	fd;
 	char	*line;
 
-	fd = open("41_no_nl", O_RDONLY);
+	fd = open("test.txt", O_RDONLY);
 
 	if (fd > 0)
 	{
@@ -62,5 +62,3 @@ int	main(void)
 	close(fd);
 	return (0);
 }
-
-*/

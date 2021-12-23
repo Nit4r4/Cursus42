@@ -1,60 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 16:09:57 by lgenevey          #+#    #+#             */
-/*   Updated: 2021/12/23 15:01:03 by lgenevey         ###   ########.fr       */
+/*   Updated: 2021/12/24 00:39:36 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-/*
----- GET_NEXT_LINE ----
-decscription :
-write a function which returns a line read from a file descriptor
-arguments :
-fd : file descriptor, id unique du fichier a lire. Le 0 1 et 2 sont reserves
-pour les entrees et sorties std et les erreurs
-la prochaine ligne lue
-
----- READ ----
-decscription :
-tente de lire nbytes de donnees de l'objet référencé par le descripteur
-dans le tampon pointé par buf.
-arguments :
-fd : file descriptor, fichier ouvert.
-*buffer : tableau qui contient les nbytes lues. Tampon qui garde l'eventuel
-surplus que demande BUFFER_SIZE.
-nbytes : le nombre d'octets a lire a la fois
-valeurs de retour :
-nbytes caracteres selon le BUFFER_SIZE donné
-0 quand on arrive en fin de fichier
--1 si erreur rencontrée
-*/
-
-/*
-gcc -Wall -Wextra -Werror *.c -g
-lldb ./a.out
-run
-b : breakpoint
-b [function_name]
-b -l || b --line : breakpoint par rappot a la ligne
-display
-c : continue
-
-*/
 
 #include "get_next_line.h"
 #include <stdio.h>
 
-/*
- * cree une chaine de caracteres qui se termine soit par \n soit par \0
- * d'apres ce qu'il y a dans la static
- * en argument :leftover
- * en sortie : line
- */
 char	*ft_fill_line(char *statiq)
 {
 	unsigned int	i;
@@ -82,12 +40,6 @@ char	*ft_fill_line(char *statiq)
 	return (0);
 }
 
-/*
- * retourne leftover avec uniquement la partie non utilisee dans line
- * statiq = leftover
- * s = line
- * aussi on free la partie abandonee dans leftover car perdue a tout jamais
-*/
 char	*ft_overwrite_statiq(char *statiq, char *s)
 {
 	char	*jarjar;
@@ -106,8 +58,6 @@ char	*ft_overwrite_statiq(char *statiq, char *s)
 	return (jarjar);
 }
 
-/* read file and return filled static variable to save infos
- */
 char	*ft_read_buffer(int fd, char *statiq)
 {
 	char		buffer[BUFFER_SIZE + 1];

@@ -6,7 +6,7 @@
 /*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 16:06:30 by lgenevey          #+#    #+#             */
-/*   Updated: 2021/12/23 14:59:35 by lgenevey         ###   ########.fr       */
+/*   Updated: 2021/12/23 00:34:40 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@
 
 char	*get_next_line(int fd);
 char	*ft_fill_line(char *s);
-char	*ft_overwrite_statiq(char *statiq, char *s);
 char	*ft_read_buffer(int fd, char *statiq);
 size_t	ft_strlen(const char *s);
 int		ft_strchr(const char *s, int c);

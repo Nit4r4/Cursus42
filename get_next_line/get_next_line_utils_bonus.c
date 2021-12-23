@@ -1,20 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_utils.c                              :+:      :+:    :+:   */
+/*   get_next_line_utils_bonus.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/21 13:38:30 by lgenevey          #+#    #+#             */
-/*   Updated: 2021/12/23 15:02:00 by lgenevey         ###   ########.fr       */
+/*   Updated: 2021/12/23 15:16:47 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-/*
- * retourne la taille d'une chaine jusqu'au caractere choisi
- */
 size_t	ft_strlen(const char *s)
 {
 	size_t	i;
@@ -25,9 +22,6 @@ size_t	ft_strlen(const char *s)
 	return (i);
 }
 
-/*
- * return 1 if c is found in *s, 0 if not
- */
 int	ft_strchr(const char *s, int c)
 {
 	int		i;
@@ -46,12 +40,6 @@ int	ft_strchr(const char *s, int c)
 	return (0);
 }
 
-/*
- * But ici : d'avoir notre *buffer, mais qui commence par les restes (*leftover)
- * retourne une nouvelle string mallocée qui concatene s1 + s2
- * free s1 car plus besoin, on a les infos dans s3
- * pas besoin de free buffer il est ecrase par read apres
- */
 char	*ft_strjoin(char *s1, char *s2)
 {
 	char	*s3;
@@ -76,10 +64,6 @@ char	*ft_strjoin(char *s1, char *s2)
 	return (s3);
 }
 
-/*
- * permet de pouvoir retourner une chaine de caracteres vide
- * au lieu de NULL on a un tableau avec juste un \0 return ft_strdup("");
- */
 char	*ft_strdup(char *s1)
 {
 	char	*copy;
