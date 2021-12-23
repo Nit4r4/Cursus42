@@ -6,7 +6,7 @@
 /*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 16:09:57 by lgenevey          #+#    #+#             */
-/*   Updated: 2021/12/20 16:16:01 by lgenevey         ###   ########.fr       */
+/*   Updated: 2021/12/23 01:52:02 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,65 +49,97 @@ c : continue
 #include "get_next_line.h"
 #include <stdio.h>
 
-// faire revenir buffer a l'index 0 (ft_memmove)
-// static sur i
+/*
+ * cree une chaine de caracteres qui se termine soit par \n soit par \0
+ * d'apres ce qu'il y a dans la static
+ * en argument :leftover
+ * en sortie : line
+ */
+char	*ft_fill_line(char *statiq)
+{
+	unsigned int	i;
+	char			*s2;
 
-char    *get_next_line(int fd)
-{    // utiliser une variable preprocesseur est ok : buffer[BUFFER_SIZE + 1]
-    // plus besoin de free comme ca.
-    // static initialisee a zero par defaut
-    char        *buffer; // stockage remplit par read
-    char        *line; // la ligne propre
-    static char    *leftover = NULL; // garde les laisses pour compte
-    ssize_t        been_read; //nb de caracteres lus
-
-    // stop si pas de fichier ou si on indique pas le nb de caracteres a lire
-    if (fd < 0 || BUFFER_SIZE <= 0 || !fd)
-        return (NULL);
-    buffer = (char *)malloc((BUFFER_SIZE + 1) *sizeof(char));
-    if (!buffer)
-        return (NULL);
-    //remplir buffer et stocker le retour de read()
-    been_read = read(fd, buffer, BUFFER_SIZE);
-    if (been_read < 1)
-        return (ft_free(buffer));
-    // tant que l'on n'a pas une ligne complete dans leftover
-    // et qu'on n'est pas a la fin du fichier
-    // - aussi on veut en sortir de la boucle si leftover est une ligne complete qui se fini pas par \n -
-    // en comparant la taille du BUFFER_SIZE avec son retour. Si retour (been_read) plus petit alors on a fini avant donc on a une ligne complete
-    while (!ft_strchr(leftover, '\n') || been_read < 1)
-    {
-        // on connait le nb de caracteres lus, = taille de buffer = been_read
-        // du coup on peut mettre le \0 si je n'utilise pas calloc
-        buffer[been_read] = '\0';
-        // si premier passage donc leftover vide
-        if (!leftover)
-            // leftover va valoir buffer anyway, pas besoin de concatener
-            leftover = ft_strdup(buffer);
-        // si on lit moins que le BUFFER_SIZE c'est qu'on s'arrete de lire avant et donc c'est sur on a tout lu
-        // on risque rien on est dans cette boucle car pas de \n anyway
-        //else if (been_read < BUFFER_SIZE)
-        //    return (ft_strdup(buffer));
-        // sinon bah on concatene les restes avec le nouveau buffer
-        else
-            // stocker les restes de buffer dans leftover pour pas perdre
-            // au prochain appel de gnl
-            // le leftover devient "le buffer de travail" de guillaume
-            // leftover en argument est initialise pour un premier passage au-dessus
-            leftover = ft_strjoin(leftover, buffer);
-        //remplir buffer et stocker le retour de read()
-        been_read = read(fd, buffer, BUFFER_SIZE);
-        if (been_read < 1)
-            return (ft_free(buffer));
-    }
-    // plus besoin du buffer on le tej
-    free(buffer);
-    buffer = NULL;
-    line = ft_substr(leftover, 0, ft_strlen(leftover, '\n') + 1); //LEAKS
-    leftover = ft_substr(leftover, ft_strlen(leftover, '\n') + 1, ft_strlen(leftover, '\0') - ft_strlen(leftover, '\n'));
-    return (line);
+	if (!statiq[0])
+		return (NULL);
+	s2 = NULL;
+	i = 0;
+	while (statiq[i] != '\0')
+	{
+		if (statiq[i] == '\n')
+		{
+			i++;
+			s2 = ft_substr(statiq, 0, i);
+			return (s2);
+		}
+		i++;
+	}
+	if (statiq[i] == '\0')
+	{
+		s2 = ft_strdup(statiq);
+		return (s2);
+	}
+	return (0);
 }
 
-// fonction qui retourne line et leftover
-// regler si been_read < BUFFER_SIZE : ok mais pas avec BS = 1
-// regler le comptage et la copie
+/*
+ * retourne leftover avec uniquement la partie non utilisee dans line
+ * statiq = leftover
+ * s = line
+ * aussi on free la partie abandonee dans leftover car perdue a tout jamais
+*/
+char	*ft_overwrite_statiq(char *statiq, char *s)
+{
+	char	*jarjar;
+	int		s_length;
+	int		statiq_length;
+
+	if (!s)
+	{
+		free(statiq);
+		return (NULL);
+	}
+	s_length = ft_strlen(s);
+	statiq_length = ft_strlen(statiq);
+	jarjar = ft_substr(statiq, s_length, statiq_length - s_length);
+	free(statiq);
+	return (jarjar);
+}
+
+/* read
+ *
+ *
+ */
+char	*ft_read_buffer(int fd, char *statiq)
+{
+	char		buffer[BUFFER_SIZE + 1]; // stockage remplit par read
+	ssize_t		been_read; //nb de caracteres lus
+
+	been_read = 1; // pour TOUJOURS lire au moins 1 fois pas bsoin de strdup ""
+	while (!ft_strchr(statiq, '\n') && been_read != 0)
+	{
+		//remplir buffer et stocker le retour de read() dans been_read
+		been_read = read(fd, buffer, BUFFER_SIZE);
+		if (been_read == -1)
+			return (NULL);
+		buffer[been_read] = '\0';
+		statiq = ft_strjoin(statiq, buffer);
+	}
+	return (statiq);
+}
+
+char	*get_next_line(int fd)
+{
+	char		*line; // la ligne propre
+	static char	*leftover = NULL; // garde les laisses pour compte
+
+	// stop si pas de fichier ou si on indique pas le nb de caracteres a lire
+	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) < 0)
+		return (NULL);
+	leftover = ft_read_buffer(fd, leftover);
+	if (!leftover)
+		return (NULL);
+	line = ft_fill_line(leftover);
+	leftover = ft_overwrite_statiq(leftover, line);
+	return (line);
+}
