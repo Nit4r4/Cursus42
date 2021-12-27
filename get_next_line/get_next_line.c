@@ -6,7 +6,7 @@
 /*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 16:09:57 by lgenevey          #+#    #+#             */
-/*   Updated: 2021/12/23 15:01:03 by lgenevey         ###   ########.fr       */
+/*   Updated: 2021/12/27 17:02:38 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,7 +128,7 @@ char	*ft_read_buffer(int fd, char *statiq)
 char	*get_next_line(int fd)
 {
 	char		*line;
-	static char	*leftover = NULL;
+	static char	*leftover;
 
 	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) < 0)
 		return (NULL);

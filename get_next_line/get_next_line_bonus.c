@@ -6,11 +6,11 @@
 /*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 16:09:57 by lgenevey          #+#    #+#             */
-/*   Updated: 2021/12/24 00:39:36 by lgenevey         ###   ########.fr       */
+/*   Updated: 2021/12/27 16:42:39 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 #include <stdio.h>
 
 char	*ft_fill_line(char *statiq)
@@ -78,14 +78,14 @@ char	*ft_read_buffer(int fd, char *statiq)
 char	*get_next_line(int fd)
 {
 	char		*line;
-	static char	*leftover = NULL;
+	static char	*leftover[65535];
 
 	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) < 0)
 		return (NULL);
-	leftover = ft_read_buffer(fd, leftover);
-	if (!leftover)
+	leftover[fd] = ft_read_buffer(fd, leftover[fd]);
+	if (!leftover[fd])
 		return (NULL);
-	line = ft_fill_line(leftover);
-	leftover = ft_overwrite_statiq(leftover, line);
+	line = ft_fill_line(leftover[fd]);
+	leftover[fd] = ft_overwrite_statiq(leftover[fd], line);
 	return (line);
 }
