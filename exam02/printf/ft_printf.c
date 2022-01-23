@@ -2,12 +2,13 @@
 #include <stdarg.h>
 #include <stdio.h>
 
+/* writes a char and return 1 */
 int ft_putchar(char c)
 {
     return write(1, &c, 1);
 }
 
-
+/* writes *s and return nb of letters written */
 int ft_putstr(char *s)
 {
     int i;
@@ -24,7 +25,7 @@ int ft_putstr(char *s)
 
 }
 
-
+/* writes n and return nb of digit written */
 int ft_putnbr(long int n)
 {
     int count;
@@ -41,7 +42,7 @@ int ft_putnbr(long int n)
     return (count);
 }
 
-
+/* convert decimal into hexadecimal, writes it and return nb of digit written */
 int ft_puthexa(unsigned int n)
 {
     int     count;
@@ -55,7 +56,7 @@ int ft_puthexa(unsigned int n)
     return (count);
 }
 
-
+/* exam02 ft_printf */
 int ft_printf(const char *str, ...)
 {
     va_list args;
