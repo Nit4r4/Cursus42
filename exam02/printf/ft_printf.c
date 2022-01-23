@@ -73,7 +73,6 @@ int ft_printf(const char *str, ...)
         else
         {
             str++;
-            //ft_norminette(*str, &count, args);
             if (*str == '%')
                 count += write(1, "%", 1);
             else if (*str == 'c')
