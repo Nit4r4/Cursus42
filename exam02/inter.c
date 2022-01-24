@@ -2,10 +2,10 @@
 
 int	main(int argc, char **argv)
 {
-	char	*table[128];
+	char	table[128];
 	int		i, j;
 
-	if (argc = 3)
+	if (argc == 3)
 	{
 		i = 0;
 		while (table[i])
@@ -24,7 +24,7 @@ int	main(int argc, char **argv)
 				else if (i == 1 && table[(unsigned char)argv[i][j]] == 1)
 				{
 					write(1, &argv[i][j], 1);
-					table[(unsigned char)argv[i][j]] == 2;
+					table[(unsigned char)argv[i][j]] = 2;
 				}
 				j++;
 			}
