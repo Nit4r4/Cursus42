@@ -28,6 +28,7 @@ int ft_putstr(char *s)
 /* writes n and return nb of digit written */
 int ft_putnbr(long int n)
 {
+    printf("entrée de putnbr : %ld", n);
     int count;
 
     count = 0;
@@ -80,7 +81,7 @@ int ft_printf(const char *str, ...)
             else if (*str == 's')
                 count += ft_putstr(va_arg(args, char *));
             else if (*str == 'd')
-                count += ft_putnbr(va_arg(args, long int));
+                count += ft_putnbr(va_arg(args, int));
             else if (*str == 'x')
                 count += ft_puthexa(va_arg(args, unsigned int));
         }
@@ -93,7 +94,7 @@ int ft_printf(const char *str, ...)
 int	main(void)
 {
 	char	*s = "salut";
-	int		d = 10;
+	int		d = -10;
 
 	printf("Salut\n");
 	printf("%%s : %s\n", s);
