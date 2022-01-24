@@ -28,7 +28,6 @@ int ft_putstr(char *s)
 /* writes n and return nb of digit written */
 int ft_putnbr(long int n)
 {
-    printf("entrée de putnbr : %ld", n);
     int count;
 
     count = 0;
