@@ -78,9 +78,9 @@ int ft_printf(const char *str, ...)
             else if (*str == 'c')
                 count += ft_putchar((char)va_arg(args, int));
             else if (*str == 's')
-                count += ft_putstr((char *)va_arg(args, char *));
-            else if (*str == 'd' || *str == 'i')
-                count += ft_putnbr(va_arg(args, int));
+                count += ft_putstr(va_arg(args, char *));
+            else if (*str == 'd')
+                count += ft_putnbr(va_arg(args, long int));
             else if (*str == 'x')
                 count += ft_puthexa(va_arg(args, unsigned int));
         }
@@ -96,12 +96,12 @@ int	main(void)
 	int		d = 10;
 
 	printf("Salut\n");
-	printf("%%s : %s", s);
+	printf("%%s : %s\n", s);
 	printf("%%d : %d\n", d);
 	printf("%%x : %x\n", d);
 
 	ft_printf("Salut\n");
-	ft_printf("%%s : %s", s);
+	ft_printf("%%s : %s\n", s);
 	ft_printf("%%d : %d\n", d);
 	ft_printf("%%x : %x\n", d);
 
