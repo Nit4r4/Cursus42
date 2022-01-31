@@ -17,6 +17,7 @@
 # include <stddef.h>
 # include <stdlib.h>
 # include <unistd.h>
+# include "main.c"
 
 int		ft_printf(const char *btween_quotes, ...);
 int		ft_putchar(char c);
