@@ -22,7 +22,6 @@ int ft_putstr(char *s)
         i++;
     }
     return (i);
-
 }
 
 /* writes n and return nb of digit written */
