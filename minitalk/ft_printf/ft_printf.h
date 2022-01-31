@@ -6,7 +6,7 @@
 /*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/08 18:33:09 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/01/31 16:28:35 by lgenevey         ###   ########.fr       */
+/*   Updated: 2022/01/31 18:30:59 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 int		ft_printf(const char *btween_quotes, ...);
 int		ft_putchar(char c);
 int		ft_putstr(char *s);
-int     ft_putnbr(long int n);
+int		ft_putnbr(long int n);
 int		ft_positive_putnbr(unsigned int n);
 int		ft_putbase(unsigned int n, unsigned int base, char *t);
 int		ft_putbase_lg(unsigned long n, unsigned int base, char *t);
