@@ -6,7 +6,7 @@
 /*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/15 01:13:09 by lgenevey          #+#    #+#             */
-/*   Updated: 2021/11/16 09:47:46 by lgenevey         ###   ########.fr       */
+/*   Updated: 2022/01/31 16:54:33 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	ft_putbase_lg(unsigned long n, unsigned int base, char *t)
 		return (write(1, &t[n % base], 1));
 	else
 	{
-		count += ft_putbase_lg_fd(n / base, base, t);
+		count += ft_putbase_lg(n / base, base, t);
 		return (write(1, &t[n % base], 1) + count);
 	}
 }
@@ -31,6 +31,6 @@ int	ft_putpointer(unsigned long n)
 	int	count;
 
 	count = write(1, "0x", 2);
-	count += ft_putbase_lg_fd(n, 16, "0123456789abcdef", 1);
+	count += ft_putbase_lg(n, 16, "0123456789abcdef");
 	return (count);
 }

@@ -6,7 +6,7 @@
 /*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/08 18:33:09 by lgenevey          #+#    #+#             */
-/*   Updated: 2021/11/16 19:58:00 by lgenevey         ###   ########.fr       */
+/*   Updated: 2022/01/31 16:28:35 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 # include <stddef.h>
 # include <stdlib.h>
 # include <unistd.h>
-# include "main.c"
 
 int		ft_printf(const char *btween_quotes, ...);
 int		ft_putchar(char c);

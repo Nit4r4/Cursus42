@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*  ft_putbase_fd.c                                     :+:      :+:    :+:   */
+/*   ft_putbase.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/14 19:49:13 by lgenevey          #+#    #+#             */
-/*   Updated: 2021/11/16 09:34:14 by lgenevey         ###   ########.fr       */
+/*   Updated: 2022/01/31 16:52:08 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	ft_putbase(unsigned int n, unsigned int base, char *table)
 
 	count = 0;
 	if (n > 15)
-		count += ft_putbase(n / base, 16, &table);
-	count += ft_putchar(&table[n % base]);
+		count += ft_putbase(n / base, base, table);
+	count += ft_putchar(table[n % base]);
 	return (count);
 }
